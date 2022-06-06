@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+{% load static %}
+{% load print_dashboard %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BPMS| Dashboard</title>
+
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}"/>
+  <link rel="stylesheet" href="{% static 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %}"/>
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}"/>
+  <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}"/>
+  <link rel="stylesheet" href="{% static 'dist/css/login_page.css' %}"/>
+
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <h3 style="margin:auto;">BARCODE PEOPLE MOVEMENT SYSTEM</h3>
+    </ul>
+    {% if user.is_authenticated %}
+    <div style="padding-left: 400px;">
+    {{ user.username }}
+    <a href="logoutdash" class="anchor">Log Out</a>
+    </div>
+    {% else %}
+    <div style="padding-left: 400px;">
+    <a style="background-color:purple;color:white">Log In</a>
+  </div>
+    {% endif %}
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container start-->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="BPMS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">BACS</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">{{ user.first_name }} {{ user.last_name }}</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+  <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+{% if user.username == "bpms_admin"  %}
+        <!-- The beginnning of the selections -->
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <p>
+                Venue
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="intocustodian" class="nav-link" name="stu">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Add new venue</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link active" name="vis">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Delete venue(s)</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+{% else %}
+      
+      {% define "active" as highlight %}
+
+{% endif %}
+  <!-- This is the next selection menu -->
+          <li class="nav-item">
+            <a href="#" class="nav-link {{ highlight }}">
+              <p>
+                Student
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="Registration/registerstudent" class="nav-link" name="stu">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Add details</p>
+                </a>
+              </li>
+            
+            </ul>
+          </li>
+<!-- next selection menu-->
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <p>
+                Staff
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="Registration/registerstaff" class="nav-link" name="stu">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Add details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link" name="sta">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Edit details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link" name="vis">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Delete details</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+<!-- next selection menu-->
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Visitor
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="" class="nav-link" name="stu">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Add details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link" name="sta">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Assign Visitor</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link" name="vis">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Edit Details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link" name="vis">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Delete Details</p>
+                </a>
+              </li> 
+            </ul>
+          </li>
+
+    <!-- next selection menu-->
+          <li class="nav-item">
+            <a href="dashboard" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Back to Admin Panel
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+<!-- this is the last selection menu -->
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+<!-- Main sidebar container end-->
+
+
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+          <!-- Content Header (Page header) -->
+                  <div class="content-header">
+                        <div class="container-fluid">
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <h1 class="m-0 text-dark">REGISTRATION PORTAL</h1><h3>(Delete Venue)</h3>
+
+                                </div><!-- /.col -->
+                             </div><!-- /.row -->
+                         
+   
+
+                            <div class="row">
+                                <div class="col-1"></div>
+                                    <div class="col-10">
+                                        <table style="width:100%">
+                                                <tr>
+                                                  <th>Venue Name</th>
+                                                  <th>Capacity</th>
+                                                  <th>Delete</th>
+                                                </tr>
+                                             {% for venue in location %}
+                                                {% if venue.venue_name != "Pool" %}
+                                                <tr>
+                                                  <td>{{ venue.venue_name }}</td>
+                                                  <td>{{ venue.capacity }}</td>
+                                                  <td><button type="submit" name="delete" style="background-color:red,color:white">Delete</button></td>
+                                                </tr>
+                                                {% endif %}
+                                              {% endfor %}
+                                              <br>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                <div class="col-1"></div>
+                            </div>
+
+
+
+                </div>
+          </div>
+  </div>
+  <!-- /.content-wrapper -->
+
+                <aside class="control-sidebar control-sidebar-dark">
+                </aside>
+                <!-- /.control-sidebar -->
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+</div>
+<!-- ./wrapper -->
+
+
+
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+<script src="{% static 'dist/js/adminlte.js' %}"></script>
+</body>
+</html>

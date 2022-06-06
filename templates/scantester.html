@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BPMS|Scanner trial</title>
+    <style>
+        .button_enter{
+                width:100px;
+                height:50px;
+                font-size:15px;
+                background-color:ForestGreen;
+                color:white;
+        }
+        .button_leave{
+                width:100px;
+                height:50px;
+                font-size:15px;
+                background-color:red;
+                color:white;
+        }
+        #inputspace{
+        width:200px;
+        height:25px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div style="text-align:center">
+            <h1>This is a Scanner Tester</h1>
+        </div>
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------------------- -->        
+         <div style="padding-left:400px;padding-right:350px;padding-bottom:50px">
+        <form action="{% url 'entry' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="scanpeople">
+                <button type="submit" class='button_enter' name='enterbuilding'}>Entry</button>
+        </form>
+        </div>
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+    <div  style="float : left;padding-left: 30px;padding-right: 200px;">
+    
+        <form action="{% url 'toclass' %}" method="post">
+        {% csrf_token %}
+
+        <div>
+                <select name="p" id="inputspace">
+                    {% for i in actual %}
+                    <option> {{ i }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class='button_enter' name='enterclass'}>Enter Class 1</button>
+        </div>
+
+        <!-- ------------------------------ -->
+        <div style="padding-top: 20px;">
+            
+                <select name="p2" id="inputspace">
+                    {% for i in actual %}
+                    <option> {{ i }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class='button_enter' name='enterclass'}>Enter Class 2</button>
+        </div>
+        <!-- ------------------------------- -->
+        
+        <div style="padding-top: 20px;">
+                <select name="office" id="inputspace">
+                    {% for i in actual %}
+                    <option> {{ i }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class='button_enter' name='enteroffice'}>Enter Office 1</button>
+        </div>
+        <!-- ------------------------------- -->
+        <div style="padding-top: 20px;">
+                <select name="office2" id="inputspace">
+                    {% for i in actual %}
+                    <option> {{ i }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class='button_enter' name='enteroffice'}>Enter Office 2</button>
+        
+        </div>
+        <!-- ------------------------------- -->
+        <div style="padding-top: 20px;">
+                <select name="library" id="inputspace">
+                    {% for i in actual %}
+                    <option> {{ i }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class='button_enter' name='enterlibrary'}>Enter Library</button>
+        </form>
+        </div>
+        </form>
+    </div>
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------------------- --> <div>
+
+                    <div style="padding-bottom:20px">
+                        <form action="{% url 'fromclass' %}" method="post">
+                            {% csrf_token %}
+                            <select name="people" id="inputspace">
+                            {% for i in class1 %}
+                            <option> {{ i }}</option>
+                            {% endfor %}
+                            </select>
+                            <button type="submit" class='button_leave' name='leave'}>Leave Class 1</button>
+                        </form>
+                    </div>
+                    <!--this is the end of the first group of buttons (the class 1 buttons)-->
+        
+                    <div style="padding-bottom:20px">
+                        <form action="{% url 'fromclass2' %}" method="post">
+                            {% csrf_token %}
+                            <select name="people2" id="inputspace">
+                            {% for i in class2 %}
+                            <option> {{ i }}</option>
+                            {% endfor %}
+                            </select>
+                            <button type="submit" class='button_leave' name='leave'}>Leave Class 2</button>
+                        </form>
+                    </div>
+                    <!--this is the end of the second group of buttons (the class 2 buttons)-->
+
+                    <div style="padding-bottom:20px">
+                        <form action="{% url 'fromoffice' %}" method="post">
+                            {% csrf_token %}
+                            <select name="o" id="inputspace">
+                            {% for i in office1 %}
+                            <option> {{ i }}</option>
+                            {% endfor %}
+                            </select>
+                            <button type="submit" class='button_leave' name='leaveoffice'}>Leave Office 1</button>
+                        </form>
+                    </div>
+                    <!--this is the end of the third group of buttons (the Office 1 buttons)-->
+        
+                    <div style="padding-bottom:20px">
+                        <form action="{% url 'fromoffice2' %}" method="post">
+                            {% csrf_token %}
+                            <select name="o2" id="inputspace">
+                            {% for i in office2 %}
+                            <option> {{ i }}</option>
+                            {% endfor %}
+                            </select>
+                            <button type="submit" class='button_leave' name='leaveoffice'}>Leave Office 2</button>
+                        </form>
+                    </div>
+                    <!--this is the end of the fourth group of buttons (the Office 2 buttons)-->
+
+                    <div style="padding-bottom:20px">
+                        <form action="{% url 'fromlibrary' %}" method="post">
+                            {% csrf_token %}
+                            <select name="lib" id="inputspace">
+                            {% for i in library %}
+                            <option> {{ i }}</option>
+                            {% endfor %}
+                            </select>
+                            <button type="submit" class='button_leave' name='leavelibrary'}>Leave Library</button>
+                        </form>
+                    </div>
+                    <!--this is the end of the fourth group of buttons (the Library buttons)-->
+</div>
+<!-- ----------------------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------------------- --> 
+
+        <div style="padding-left:400px;padding-right:350px;padding-bottom:50px">
+        <form action="{% url 'departure' %}" method="post">
+                {% csrf_token %}
+                <select name="leave" id="inputspace">
+                    {% for i in actual %}
+                    <option> {{ i }}</option>
+                    {% endfor %}
+                </select>  <button type="submit" class='button_leave' name='leavebuilding'}>Departure</button>  
+        </form>
+        </div>
+
+</body>
+</html>

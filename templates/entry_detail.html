@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>BPMS | {{ message }} Note</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{% static 'dist/all.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'dist/bootstrap-select.css' %}" />
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition">
+<div class="wrapper">
+
+  <!-- Navbar -->
+ 
+
+  <!-- Main Sidebar Container -->
+
+
+  <!-- Content Wrapper. Contains page content -->
+
+    <!-- Content Header (Page header) -->
+ 
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+       
+        <div class="row">
+          <div class="col-lg-2 col-md-1"></div>
+            <div class="col-lg-8 ">
+          
+
+
+  <div class="modal-success" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title text-primary"><strong></strong></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          {% if action == 'leave' %}
+          
+          
+   
+          <div class="col-lg-10 col-md-10">
+            
+            <h1 class="text text-success"><strong>{{ message }}</strong></h1><br>
+            
+            <b class="text text-primary"><h4><strong>Name : {{ reg.last_name }}</strong></h4></b><br>
+            <b class="text text-primary"><h4><strong>RegNo: {{ reg.record_id }}</strong></h4></b><br>
+                 
+                      <b class="text text-primary"><h4><strong>Occupation : {{ reg.occupation }}</strong></h4></b>
+               
+          </div>
+          {%else%}
+           
+          <div class="col-lg-5 col-md-5">
+            
+            <img src="/media/{{ picha }}" class="img img-fluid img-thumbnail">
+          </div>
+         
+          <div class="col-lg-7 col-md-7">
+            
+            <h1 class="text text-success"><strong>{{ message }}</strong></h1><br>
+            
+            <b class="text text-primary"><h4><strong>Name : {{ reg.first_name }} {{reg.last_name}}</strong></h4></b><br>
+            
+                  {% if occupation == 'Student' %}
+                      <b class="text text-primary"><h4><strong>Occupation : Student</strong></h4></b>
+                      <b class="text text-primary"><h4><strong>RegNo: {{ reg.student_id }}</strong></h4></b><br>
+                  {% elif occupation == 'Staff' %}
+                      <b class="text text-primary"><h4><strong>Occupation : Staff</strong></h4></b>
+                      <b class="text text-primary"><h4><strong>RegNo: {{ reg.staff_id }}</strong></h4></b><br> 
+                  {% elif occupation == 'visitor' %}
+                      <b class="text text-primary"><h4><strong>Occupation : Visitor</strong></h4></b> 
+                      <b class="text text-primary"><h4><strong>RegNo: {{ reg.visitor_id }}</strong></h4></b><br>
+                  {% else %}
+                      <b class="text text-primary"><h4><strong>Occupation : Unknown</strong></h4></b> 
+                  {% endif %}
+          </div>
+          {%endif%}
+        </div>
+        
+      
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+
+
+
+
+
+
+            </div>
+          </div>
+          <!-- /.col-md-6 -->
+          
+          <!-- /.col-md-6 -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <h5>Title</h5>
+      <p>Sidebar content</p>
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+
+
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+
+<script src="{% static 'dist/bootstrap-select.min.js' %}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.selectpicker').selectpicker();
+
+    })
+
+    setTimeout(function(){
+      window.location.href = 'scanner';
+    }, 5000);
+</script>
+
+
+</body>
+</html>

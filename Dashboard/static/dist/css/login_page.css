@@ -1,0 +1,42 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+	div.container{
+		border-width: thick;
+		border-top-style: solid;
+		border-top-color: #3C1053FF;
+		box-shadow: 1px 6px black;
+	}
+
+	.middle-content{
+		margin-left: 20px;
+	}
+	#info{
+		font-size: 18px;
+		font-weight: bold;
+	}
+	#log_in_form{
+		background-color: paleturquoise;
+		width: 500px;
+		height: 400px;
+		margin: auto;
+		margin-top: 60px;
+		align-items: center;
+	}
+	.submit_button{
+		width:70px;
+		height: 20;
+		background-color: gray;
+		font-weight: bold;
+		color:white;
+		box-shadow: black 1px 1px;
+	}
+	.anchor{
+    border: solid black 2px;
+    background-color:purple;
+    color:white;
+	}
+	.capacity{
+		background-color: red;
+	}
+</style>

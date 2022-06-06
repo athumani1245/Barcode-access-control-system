@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>BPMS|Log In</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'dist/css/login_page.css' %}"/>
+</head>
+
+
+<body style="background-image: '{% static 'img/background101.jpg' %}';">
+<form action="logindash" method="post">
+	{% csrf_token %}
+<div class='container' id='log_in_form' style="background-color:white;">
+	<div style='font-size: 30px;text-align:center;'>BARCODE ACCESS CONTROL SYSTEM</b></div>
+	<br><br>
+	<div class="middle-content">
+		<div class="form-outline mb-4">
+			<label id="info" class="form-label">Enter Username</label><br>
+			<input type='text' name="username" class="form-control" >
+		</div>
+		<div class="form-outline mb-4">
+			<label id="info" class="form-label">Enter Password</label><br>
+			<input type='password' name="password" class="form-control">
+		</div>
+		<button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+		<div class="row mb-4">
+			<div class="col d-flex justify-content-center">
+			  <div class="col">
+				<label class="form-check-label" for="form2Example31"> Not an Admin?</label>
+			  </div>
+			</div>
+		
+			<div class="col">
+			  <!-- Simple link -->
+			  <a href="{% url 'login' %}">Login as Custodian</a>
+			</div>
+		  </div>
+		
+	</div>
+</div>
+</form>
+<div>
+	{% for message in messages %}	
+	<h3> {{ message }} </h3>
+	{% endfor %}
+</div>
+
+</body>
+</html>

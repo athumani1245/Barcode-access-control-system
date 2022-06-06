@@ -1,0 +1,41 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+	div.container{
+		border-width: thick;
+		border-top-style: solid;
+		border-top-color: #3C1053FF;
+		box-shadow: 5px 5px black;
+	}
+	.body_style{
+		background-image: url(/media/background102.jpg);
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	.middle-content{
+		margin-left: 20px;
+	}
+	#info{
+		font-size: 18px;
+		font-weight: bold;
+	}
+	#log_in_form{
+		background-color: paleturquoise;
+		width: 500px;
+		height: 400px;
+		margin: auto;
+		margin-top: 60px;
+		align-items: center;
+	}
+	.submit_button{
+		width:70px;
+		height: 20;
+		background-color: gray;
+		font-weight: bold;
+		color:white;
+		box-shadow: black 1px 1px;
+	}
+
+
+</style>

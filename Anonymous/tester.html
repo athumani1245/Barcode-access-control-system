@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bar Chart</title>
+	<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+</head>
+<body>
+	<div id="ChartContainer" style="width:100%;height: 500px;"></div>
+	<script> 
+		window.onload = function()
+	{
+		var chart = new CanvasJS.chart("ChartContainer", {
+			animationEnabled:true,
+			title :{
+				text:"Representation of Student Attendance"
+			},
+			axisY:{
+				title:"Billions of Barrel",
+				titleFontColor:"#4F81BC",lineColor:"#34F81BC",
+				labelFontColor:"#4F81BC",tickColor:"#4F81BC"
+			},
+			axisY2:{
+				title:"Billions of Barrel/day",
+				titleFontColor:"#C0504E",lineColor:"#C0504E",
+				labelFontColor:"#C0504E",tickColor:"#C0504E"	
+			},
+			tooltip:{
+				shared:true
+			},
+			legend:{
+				cursor:"pointer",
+				itemclick:toggleDataSeries
+			},
+			data:[{
+				type:"column",
+				name:"Detail Student",
+				legendText:"Proven Students",
+				showInLegend:true,
+				dataPoints:[{
+				label:"Saudi",y:266.21},
+				{label:"Venezuela",y:302.33},
+				{label:"Iran",y:157.20},
+				{label:"Iraq",y:148.77},
+				{label:"Kuwait",y:101.50},
+				{label:"UAE",y:97.8}
+				]
+			},
+			{
+				type:"column",
+				name:"Detail Student/day",
+				legendText:"Proven Staffs",
+				axisYType:"secondary",
+				showInLegend:true,
+				dataPoints:[{
+				label:"Saudi",y:10.46},
+				{label:"Venezuela",y:2.27},
+				{label:"Iran",y:15.1},
+				{label:"Iraq",y:4.46},
+				{label:"Kuwait",y:2.92},
+				{label:"UAE",y:3.1}
+				]
+			}]
+
+		});
+		chart.render();
+		function toggleDataSeries(e){
+			if (typeof(e.toggleDataSeries.visible)=="undefined" || e.dataSeries.visible) {
+				e.dataSeries.visible = false;
+			}
+			else{
+				e.dataSeries.visible = true;
+			}
+			chart.render();
+		}
+	}
+	</script>
+</body>
+</html>

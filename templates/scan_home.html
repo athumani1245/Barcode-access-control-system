@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="{% static 'plugins/popper/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+
+
+    <title>BPMS scanners</title>
+    <style>
+        .button_size{
+                width:70px;
+                height:50px;
+                font-size:15px;
+                color:white;
+        }
+        #inputspace{
+        width:200px;
+        height:25px;
+        }
+
+    </style>
+</head>
+<body class="content-wrapper">
+    <div>
+            <div class="container d-flex justify-content-center"style="text-align:center">
+                <h1 class="m-0">Scanner Control Panel</h1>
+            </div>
+            <div class="container d-flex justify-content-center"style="text-align:center">
+                <h1 class="m-0">view all scanners</h1>
+            </div>
+
+
+    <!-- ---------------------------------------------------------------------------------------------------------- -->
+            <div class="row">
+                    <div class="col-1"></div>
+                    
+                    <div class="col-10">
+                            <!-- Main content -->
+                            <div class="content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="card">
+                                                    
+                                                    <div class="card-header">
+                                                        <h5 >Gate</h5>
+                                                    </div>
+
+                                                    <div class="card-body">
+                                                        <div style="float:left;">
+                                                         
+                                                            <a href="http://127.0.0.1:8000/Registration/entry" ><button type="submit" name="Pool" class="btn btn-success" data-toggle="modal" data-target="#modal-overlay"> IN </button></a>  
+
+                                                        </div>
+
+                                                        <div style="float:right;">
+                                                            
+                                                            <a href="http://127.0.0.1:8000/Registration/departure_view" ><button type="submit" name="Pool" class="btn btn-danger" data-toggle="modal" data-target="#modal-overlay"> OUT </button></a> 
+
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                             {% for venue in actual %}
+                                             
+                                    
+                                            <div class="col-md-3">
+                                                <div class="card">
+                                                        
+                                                        <div class="card-header">
+                                                            <h5 >{{ venue }}</h5>
+                                                        </div>
+
+                                                        <div class="card-body">
+                                                            <div style="float:left;">
+                                                             
+                                                                <a href="http://127.0.0.1:8000/Registration/enter?v={{ venue }}" ><button  name="{{ venue }}" class="btn btn-success" data-toggle="modal" data-target="#modal-overlay"> IN </button></a>  
+
+                                                            </div>
+
+                                                            <div style="float:right;">
+                                                                
+                                                                <a href="http://127.0.0.1:8000/Registration/leave?v={{ venue }}" ><button  name="{{ venue }}" class="btn btn-danger" data-toggle="modal" data-target="#modal-overlay"> OUT </button></a> 
+
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.col-md-6 -->
+                                    
+                            {% endfor %}
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                   
+            </div>
+
+<!-- ---------------------------------------------------------------------------------------------------------- -->
+    <div class="container d-flex justify-content-center"style="text-align:center">
+        <a href="{% url 'dash' %}"><button type="submit" name="" class="btn btn-primary" data-toggle="modal" data-target="#modal-overlay">Back to Dashboard</button></a>
+    </div>
+    </div>
+
+
+ 
+
+
+
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/popper/popper.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+
+</body>
+</html>

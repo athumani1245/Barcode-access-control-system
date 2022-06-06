@@ -1,0 +1,266 @@
+{% load static %}
+{% load print_dashboard %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>BPMS Custodian | Add Staff</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'dist/css/bootstrap-select.css' %}" />
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'dist/css/login_page.css' %}"/>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <h3 style="margin:auto;">BIOMETRIC PEOPLE MOVEMENT SYSTEM</h3>
+    </ul>
+    {% if user.is_authenticated %}
+    {% else %}
+    <div style="padding-left: 400px;">
+    <a style="background-color:purple;color:white">Log In</a>
+  </div>
+    {% endif %}
+  </nav>
+  <!-- /.navbar -->
+  <!-- /.navbar -->
+
+   <!-- Main Sidebar Container start-->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <span class="brand-text font-weight-light">BPMS</span>
+    </a>
+
+
+<!-- Sidebar Menu -->
+  <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+{% if user.username == "sysadmin" %}
+        
+{% else %}
+      
+      {% define "active" as highlight %}
+
+{% endif %}
+  <!-- This is the next selection menu -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Student
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'registerstudent' %}" class="nav-link" name="stu">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Add details</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+<!-- next selection menu-->
+          <li class="nav-item menu-open">
+            <a href="" class="nav-link active">
+              <p>
+                Staff
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link active" name="stu">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add details</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+<!-- next selection menu-->
+            <li class="nav-item">
+            <a href="" class="nav-link">
+              <p>
+                Visitor
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'visitoradd' %}" class="nav-link" name="stu">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Add details</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+<!-- this is the last selection menu -->
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+<!-- Main sidebar container end-->
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Add Staff</h1>
+
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+       
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-lg-10 ">
+          <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Fill the form below to Register new Staff</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="staffsaver" enctype="multipart/form-data" method="POST">
+                 {% csrf_token %}
+                <div class="card-body">
+        <div class="row">
+
+                  <div class="col-lg-6 col-md-6">
+                  <div class="form-group ">
+
+                    <label for="exampleInputEmail1">Firstname</label>
+                    <input type="text" name="fname" class="form-control"  placeholder="" required="required">
+                  </div>
+                </div>
+                <div class=" col-lg-6">
+                   <div class="form-group ">
+                    <label for="feature 1">Lastname</label>
+                    <input type="text" name="lname" class="form-control"  required="required">
+                  </div>
+                </div>
+                             <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                  <label>Gender</label>*
+                  <select name="gender" class="form-control">
+                    <option>Select Gender</option>
+                    <option value="M">Male</option>
+                    <option value='F'>Female</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6">
+                  <div class="form-group">
+                    <label for="feature 1">Department</label>*
+                    
+                    <select name="program" class="form-control">
+                    <option>Select Department</option>
+                    <option value="DCISM">Department of Computing,Information systems and Mathematics</option>
+                    <option value="DBAF">Department of Banking, Finance and Economics</option>
+                    <option value='DA'>Department of Accountancy</option>
+                  </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                  <div class="form-group">
+                    <label for="feature 1">Staff ID No</label>
+                    <input type="text" name="reg" class="form-control" placeholder="IMC/STAFFID/0XX" required="required">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                  <div class="form-group">
+                    <label for="feature 1">Picture</label>
+                    <input type="file" name="pic" class="form-control"  required="required">
+                  </div>
+                </div>
+                 
+             
+              </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- /.col-md-6 -->
+          
+          <!-- /.col-md-6 -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <h5>Title</h5>
+      <p>Sidebar content</p>
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+
+
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+
+<script src="{% static 'plugins/bootstrap/js//bootstrap-select.min.js' %}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.selectpicker').selectpicker();
+
+    })
+</script>
+
+
+</body>
+</html>

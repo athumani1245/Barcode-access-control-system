@@ -1,0 +1,359 @@
+{% load static %}
+{% load print_dashboard %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>BPMS Custodian||Add Student</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'dist/css/bootstrap-select.css' %}" />
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'dist/css/login_page.css' %}"/>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <h3 style="margin:auto;">BIOMETRIC PEOPLE MOVEMENT SYSTEM</h3>
+    </ul>
+    {% if user.is_authenticated %}
+    <div style="padding-left: 400px;">
+    Custodian Name
+    <a href="logoutdash" class="anchor">Log Out</a>
+    </div>
+    {% else %}
+    <div style="padding-left: 400px;">
+    <a style="background-color:purple;color:white">Log In</a>
+  </div>
+    {% endif %}
+  </nav>
+  <!-- /.navbar -->
+  <!-- /.navbar -->
+
+   <!-- Main Sidebar Container start-->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="BPMS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">BPMS</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">{{ user.first_name }} {{ user.last_name }}</a>
+        </div>
+      </div>
+
+          <!-- Sidebar Menu -->
+  <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+{% if user.username == "bpms_admin"  %}
+        <!-- The beginnning of the selections -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Venue
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/intocustodian" class="nav-link" name="stu">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Add new venue</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="intocustodiandeletion" class="nav-link" name="vis">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Delete venue(s)</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+{% else %}
+      
+      {% define "active" as highlight %}
+
+{% endif %}
+  <!-- This is the next selection menu -->
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <p>
+                Student
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="Registration/registerstudent" class="nav-link active" name="stu">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/deletestudent" class="nav-link" name="sta">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Edit details</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+<!-- next selection menu-->
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <p>
+                Staff
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="registerstaff" class="nav-link" name="stu">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Add details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/deletestaff" class="nav-link" name="sta">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Edit details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link" name="vis">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Delete details</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+<!-- next selection menu-->
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Visitor
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="" class="nav-link" name="stu">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Add details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link" name="sta">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Assign Visitor</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link" name="vis">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Edit Details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link" name="vis">
+                  <i class="far fa-square nav-icon"></i>
+                  <p>Delete Details</p>
+                </a>
+              </li> 
+            </ul>
+          </li>
+
+    <!-- next selection menu-->
+          <li class="nav-item">
+            <a href="/dashboard" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Back to Admin Panel
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+<!-- this is the last selection menu -->
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+<!-- Main sidebar container end-->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">REGISTRATION PORTAL</h1><h3>(Add Student)</h3>
+
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+       
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-lg-10 ">
+          <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Fill the form below to add new Student</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="form-saver" enctype="multipart/form-data" method="POST">
+                 {% csrf_token %}
+                <div class="card-body">
+        <div class="row">
+
+                  <div class="col-lg-6 col-md-6">
+                  <div class="form-group ">
+
+                    <label for="exampleInputEmail1">Firstname </label>*
+                    <input type="text" name="fname" class="form-control" value="{{std.first_name}}"  placeholder="" required="required">
+                  </div>
+                </div>
+                <div class=" col-lg-6">
+                   <div class="form-group ">
+                    <label for="feature 1">Lastname</label>*
+                    <input type="text" name="lname" class="form-control" value='{{std.last_name}}' required="required">
+                  </div>
+                </div>
+            
+              
+                <div class="col-lg-6 col-md-6">
+                  <div class="form-group">
+                    <label for="feature 1">Program</label>*
+                    
+                    <select name="program" class="form-control">
+                    
+                    <option value="{{std.programme}}" selected="">{{std.programme}}</option>
+                    <option value="BIT">Bachelor of Science in Information Technology</option>
+                    <option value="BAC">Bachelor of Accountancy</option>
+                    <option value='BAIT'>Bachelor of Accountancy in Information Technology</option>
+                    <option value="BBF">Bachelor of Banking and Finance</option>
+                  </select>
+                  </div>
+                </div>
+                
+                  <div class="col-lg-6 col-md-6">
+                  <div class="form-group">
+                    <label for="feature 1">Year</label>
+                    <select type="number" name="year" class="form-control" placeholder="" required="required">
+                    <option>Select Year</option>
+                    <option value="1">ONE</option>
+                    <option value="2">TWO</option>
+                    <option value="3">THREE</option>
+
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                  <div class="form-group">
+                    <label for="feature 1">Registration Number</label>*
+                    <input type="text" name="reg" class="form-control" placeholder="IMC/BIT/18/9XXXXX" required="required">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                  <div class="form-group">
+                    <label for="feature 1">Profile Picture</label>
+                    <input type="file" name="pic" class="form-control"  required="required">
+                  </div>
+                </div>
+                 
+             
+              </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- /.col-md-6 -->
+          
+          <!-- /.col-md-6 -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <h5>Title</h5>
+      <p>Sidebar content</p>
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+
+
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+
+<script src="{% static 'plugins/bootstrap/js//bootstrap-select.min.js' %}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.selectpicker').selectpicker();
+
+    })
+</script>
+
+
+</body>
+</html>
